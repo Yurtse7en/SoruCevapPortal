@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB03Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cevap">
+    <Key>
+      <PropertyRef Name="cevapId" />
+    </Key>
+    <Property Name="cevapId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="cevap" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="kategoriId" />
+    </Key>
+    <Property Name="kategoriId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="katKodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kategori" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kayit">
+    <Key>
+      <PropertyRef Name="kayitId" />
+    </Key>
+    <Property Name="kayitId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kayitCevapId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kayitSoruId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kayitKatId" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Soru">
+    <Key>
+      <PropertyRef Name="soruId" />
+    </Key>
+    <Property Name="soruId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="soruKatId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="soru" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Uye">
+    <Key>
+      <PropertyRef Name="uyeId" />
+    </Key>
+    <Property Name="uyeId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="uyeAdsoyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="uyeMail" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Kayit_ToCevap">
+    <End Role="Cevap" Type="Self.Cevap" Multiplicity="1" />
+    <End Role="Kayit" Type="Self.Kayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cevap">
+        <PropertyRef Name="cevapId" />
+      </Principal>
+      <Dependent Role="Kayit">
+        <PropertyRef Name="kayitCevapId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kayit_ToKat">
+    <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+    <End Role="Kayit" Type="Self.Kayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="kategoriId" />
+      </Principal>
+      <Dependent Role="Kayit">
+        <PropertyRef Name="kayitKatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kayit_ToSoru">
+    <End Role="Soru" Type="Self.Soru" Multiplicity="1" />
+    <End Role="Kayit" Type="Self.Kayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Soru">
+        <PropertyRef Name="soruId" />
+      </Principal>
+      <Dependent Role="Kayit">
+        <PropertyRef Name="kayitSoruId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB03ModelStoreContainer">
+    <EntitySet Name="Cevap" EntityType="Self.Cevap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kayit" EntityType="Self.Kayit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Soru" EntityType="Self.Soru" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Uye" EntityType="Self.Uye" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Kayit_ToCevap" Association="Self.FK_Kayit_ToCevap">
+      <End Role="Cevap" EntitySet="Cevap" />
+      <End Role="Kayit" EntitySet="Kayit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kayit_ToKat" Association="Self.FK_Kayit_ToKat">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="Kayit" EntitySet="Kayit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kayit_ToSoru" Association="Self.FK_Kayit_ToSoru">
+      <End Role="Soru" EntitySet="Soru" />
+      <End Role="Kayit" EntitySet="Kayit" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{F52D096C-BBB0-4C7B-8690-FA14DB76AD02}|">
+  <MonoDevelop.Ide.ItemProperties.uyg04 PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="uyg04/Controllers/ServisController.cs">
+    <Files>
+      <File FileName="uyg04/Controllers/ServisController.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="uyg04" expanded="True">
+            <Node name="uyg04" expanded="True">
+              <Node name="App_Data" expanded="True" />
+              <Node name="App_Start" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="ServisController.cs" selected="True" />
+              </Node>
+              <Node name="ViewModel" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

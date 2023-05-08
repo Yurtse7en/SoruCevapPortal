@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB03Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cevap">
+    <Key>
+      <PropertyRef Name="cevapId" />
+    </Key>
+    <Property Name="cevapId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cevap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Kayit" Relationship="Self.FK_Kayit_ToCevap" FromRole="Cevap" ToRole="Kayit" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="kategoriId" />
+    </Key>
+    <Property Name="kategoriId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="katKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kategori" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Kayit" Relationship="Self.FK_Kayit_ToKat" FromRole="Kategori" ToRole="Kayit" />
+  </EntityType>
+  <EntityType Name="Kayit">
+    <Key>
+      <PropertyRef Name="kayitId" />
+    </Key>
+    <Property Name="kayitId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kayitCevapId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kayitSoruId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kayitKatId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Cevap" Relationship="Self.FK_Kayit_ToCevap" FromRole="Kayit" ToRole="Cevap" />
+    <NavigationProperty Name="Kategori" Relationship="Self.FK_Kayit_ToKat" FromRole="Kayit" ToRole="Kategori" />
+    <NavigationProperty Name="Soru" Relationship="Self.FK_Kayit_ToSoru" FromRole="Kayit" ToRole="Soru" />
+  </EntityType>
+  <EntityType Name="Soru">
+    <Key>
+      <PropertyRef Name="soruId" />
+    </Key>
+    <Property Name="soruId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="soruKatId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="soru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Kayit" Relationship="Self.FK_Kayit_ToSoru" FromRole="Soru" ToRole="Kayit" />
+  </EntityType>
+  <EntityType Name="Uye">
+    <Key>
+      <PropertyRef Name="uyeId" />
+    </Key>
+    <Property Name="uyeId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uyeAdsoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uyeMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Kayit_ToCevap">
+    <End Role="Cevap" Type="Self.Cevap" Multiplicity="1" />
+    <End Role="Kayit" Type="Self.Kayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cevap">
+        <PropertyRef Name="cevapId" />
+      </Principal>
+      <Dependent Role="Kayit">
+        <PropertyRef Name="kayitCevapId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kayit_ToKat">
+    <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+    <End Role="Kayit" Type="Self.Kayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="kategoriId" />
+      </Principal>
+      <Dependent Role="Kayit">
+        <PropertyRef Name="kayitKatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kayit_ToSoru">
+    <End Role="Soru" Type="Self.Soru" Multiplicity="1" />
+    <End Role="Kayit" Type="Self.Kayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Soru">
+        <PropertyRef Name="soruId" />
+      </Principal>
+      <Dependent Role="Kayit">
+        <PropertyRef Name="kayitSoruId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB03Entities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cevap" EntityType="Self.Cevap" />
+    <EntitySet Name="Kategori" EntityType="Self.Kategori" />
+    <EntitySet Name="Kayit" EntityType="Self.Kayit" />
+    <EntitySet Name="Soru" EntityType="Self.Soru" />
+    <EntitySet Name="Uye" EntityType="Self.Uye" />
+    <AssociationSet Name="FK_Kayit_ToCevap" Association="Self.FK_Kayit_ToCevap">
+      <End Role="Cevap" EntitySet="Cevap" />
+      <End Role="Kayit" EntitySet="Kayit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kayit_ToKat" Association="Self.FK_Kayit_ToKat">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="Kayit" EntitySet="Kayit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kayit_ToSoru" Association="Self.FK_Kayit_ToSoru">
+      <End Role="Soru" EntitySet="Soru" />
+      <End Role="Kayit" EntitySet="Kayit" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

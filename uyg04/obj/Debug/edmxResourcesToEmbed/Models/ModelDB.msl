@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB03ModelStoreContainer" CdmEntityContainer="DB03Entities3">
+    <EntitySetMapping Name="Cevap">
+      <EntityTypeMapping TypeName="DB03Model.Cevap">
+        <MappingFragment StoreEntitySet="Cevap">
+          <ScalarProperty Name="cevapId" ColumnName="cevapId" />
+          <ScalarProperty Name="cevap" ColumnName="cevap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategori">
+      <EntityTypeMapping TypeName="DB03Model.Kategori">
+        <MappingFragment StoreEntitySet="Kategori">
+          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+          <ScalarProperty Name="katKodu" ColumnName="katKodu" />
+          <ScalarProperty Name="kategori" ColumnName="kategori" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kayit">
+      <EntityTypeMapping TypeName="DB03Model.Kayit">
+        <MappingFragment StoreEntitySet="Kayit">
+          <ScalarProperty Name="kayitId" ColumnName="kayitId" />
+          <ScalarProperty Name="kayitCevapId" ColumnName="kayitCevapId" />
+          <ScalarProperty Name="kayitSoruId" ColumnName="kayitSoruId" />
+          <ScalarProperty Name="kayitKatId" ColumnName="kayitKatId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Soru">
+      <EntityTypeMapping TypeName="DB03Model.Soru">
+        <MappingFragment StoreEntitySet="Soru">
+          <ScalarProperty Name="soruId" ColumnName="soruId" />
+          <ScalarProperty Name="soruKatId" ColumnName="soruKatId" />
+          <ScalarProperty Name="soru" ColumnName="soru" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uye">
+      <EntityTypeMapping TypeName="DB03Model.Uye">
+        <MappingFragment StoreEntitySet="Uye">
+          <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+          <ScalarProperty Name="uyeAdsoyad" ColumnName="uyeAdsoyad" />
+          <ScalarProperty Name="uyeMail" ColumnName="uyeMail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
