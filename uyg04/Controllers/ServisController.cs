@@ -6,10 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using SoruCevap.Models;
-using SoruCevap.ViewModel;
+using uyg04.Models;
+using uyg04.ViewModel;
 
-namespace SoruCevap.Controllers
+namespace uyg04.Controllers
 {
     public class ServisController : ApiController
     {
